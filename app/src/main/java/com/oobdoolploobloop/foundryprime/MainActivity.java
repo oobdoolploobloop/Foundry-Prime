@@ -1,13 +1,11 @@
 package com.oobdoolploobloop.foundryprime;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
+
+import com.oobdoolploobloop.foundryprime.Items.Warframe;
+import com.oobdoolploobloop.foundryprime.Webtools.Scraper;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -15,6 +13,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Warframe warframe = new Warframe("Nezha");
+        Scraper scraper = new Scraper();
+
+        warframe.populateStatsFromScraper(scraper);
+
     }
 
 
