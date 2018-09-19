@@ -16,10 +16,10 @@ public class Scraper {
     }
 
     public int populateWarframeStats(Warframe warframe){
-        Boolean primeWarframe = warframe.getName().contains("Prime");
+        Boolean primeWarframe = warframe.getNameString().contains("Prime");
 
         // Remove Prime tag, all data grabbed even for vanilla
-        String html = "http://warframe.wikia.com/wiki/" + warframe.getName().replace(" Prime", "");
+        String html = "http://warframe.wikia.com/wiki/" + warframe.getNameString().replace(" Prime", "");
 
         try{
             Document doc = Jsoup.connect(html).get();

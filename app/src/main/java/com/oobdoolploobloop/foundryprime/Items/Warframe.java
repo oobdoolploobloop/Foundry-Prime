@@ -6,8 +6,7 @@ import java.util.List;
 
 public class Warframe {
 
-
-    private String name;
+    private GlobalResourcesFile.WARFRAME_NAMES name;
     private int masteryRank;
     private int healthBase;
     private int healthMax;
@@ -17,23 +16,38 @@ public class Warframe {
     private int energyBase;
     private int EnergyMax;
     private float sprintSpeed;
-    private Polarity.POLARITY auraPolarity;
-    private Polarity.POLARITY exilusPolarity;
-    private List<Polarity.POLARITY> polarities;
+    private GlobalResourcesFile.POLARITY_NAMES auraPolarity;
+    private GlobalResourcesFile.POLARITY_NAMES exilusPolarity;
+    private List<GlobalResourcesFile.POLARITY_NAMES> polarities;
 
-    public Warframe(String name){
-        this.name = name;
+    public Warframe(GlobalResourcesFile.WARFRAME_NAMES name){
+        this.setName(name);
     }
 
     public int populateStatsFromScraper(Scraper scraper){
         return scraper.populateWarframeStats(this);
     }
 
-    public String getName(){
+    public GlobalResourcesFile.WARFRAME_NAMES getName(){
         return this.name;
     }
-    public void setName(String name) {
+
+    public String getNameString(){
+        String str = this.name.name().toLowerCase().replace("_", " ");
+        return (str.substring(0,1).toUpperCase() + str.substring(1));
+    }
+
+    public void setName(GlobalResourcesFile.WARFRAME_NAMES name) {
         this.name = name;
+    }
+
+    public void setNameString(String setName){
+        setName.toUpperCase().replace(" ", "_");
+        try{
+            this.name = GlobalResourcesFile.WARFRAME_NAMES.valueOf(setName);
+        }catch(IllegalArgumentException e){
+            this.name = GlobalResourcesFile.WARFRAME_NAMES.DUMMY;
+        }
     }
 
     public int getMasteryRank() {
@@ -108,27 +122,27 @@ public class Warframe {
         this.sprintSpeed = sprintSpeed;
     }
 
-    public Polarity.POLARITY getAuraPolarity() {
+    public GlobalResourcesFile.POLARITY_NAMES getAuraPolarity() {
         return auraPolarity;
     }
 
-    public void setAuraPolarity(Polarity.POLARITY auraPolarity) {
+    public void setAuraPolarity(GlobalResourcesFile.POLARITY_NAMES auraPolarity) {
         this.auraPolarity = auraPolarity;
     }
 
-    public Polarity.POLARITY getExilusPolarity() {
+    public GlobalResourcesFile.POLARITY_NAMES getExilusPolarity() {
         return exilusPolarity;
     }
 
-    public void setExilusPolarity(Polarity.POLARITY exilusPolarity) {
+    public void setExilusPolarity(GlobalResourcesFile.POLARITY_NAMES exilusPolarity) {
         this.exilusPolarity = exilusPolarity;
     }
 
-    public List<Polarity.POLARITY> getPolarities() {
+    public List<GlobalResourcesFile.POLARITY_NAMES> getPolarities() {
         return polarities;
     }
 
-    public void setPolarities(List<Polarity.POLARITY> polarities) {
+    public void setPolarities(List<GlobalResourcesFile.POLARITY_NAMES> polarities) {
         this.polarities = polarities;
     }
 
