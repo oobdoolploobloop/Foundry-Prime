@@ -1,7 +1,9 @@
 package com.oobdoolploobloop.foundryprime.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
 import com.oobdoolploobloop.foundryprime.Items.GlobalResourcesFile;
 import com.oobdoolploobloop.foundryprime.Items.Warframe;
@@ -21,6 +23,11 @@ public class MainActivity extends AppCompatActivity {
 
         warframe.populateStatsFromScraper(scraper);
 
+    }
+
+    public void startNewBuild(View view){
+        Intent intent = new Intent(this, Builder.class);
+        startActivity(intent);
     }
 
 
