@@ -10,7 +10,6 @@ import com.oobdoolploobloop.foundryprime.Items.Warframe;
 import com.oobdoolploobloop.foundryprime.R;
 import com.oobdoolploobloop.foundryprime.Webtools.Scraper;
 
-
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -22,11 +21,11 @@ public class MainActivity extends AppCompatActivity {
         Scraper scraper = new Scraper();
 
         warframe.populateStatsFromScraper(scraper);
-
     }
 
     public void startNewBuild(View view){
-        Intent intent = new Intent(this, Builder.class);
+        Intent intent = new Intent(this, BuilderActivity.class);
+
         startActivity(intent);
     }
 

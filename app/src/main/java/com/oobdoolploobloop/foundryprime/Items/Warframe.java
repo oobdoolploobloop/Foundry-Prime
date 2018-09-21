@@ -1,6 +1,7 @@
 package com.oobdoolploobloop.foundryprime.Items;
 
 import com.oobdoolploobloop.foundryprime.Webtools.Scraper;
+import com.oobdoolploobloop.foundryprime.Webtools.WarframeScraper;
 
 import java.util.List;
 
@@ -25,7 +26,9 @@ public class Warframe {
     }
 
     public int populateStatsFromScraper(Scraper scraper){
-        return scraper.populateWarframeStats(this);
+        //return scraper.populateWarframeStats(this);
+        new WarframeScraper().execute(this);
+        return 0;
     }
 
     public GlobalResourcesFile.WARFRAME_NAMES getName(){
