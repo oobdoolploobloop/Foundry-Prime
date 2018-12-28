@@ -25,8 +25,7 @@ public class Warframe {
         this.setName(name);
     }
 
-    public int populateStatsFromScraper(Scraper scraper){
-        //return scraper.populateWarframeStats(this);
+    public int populateStatsFromScraper(){
         new WarframeScraper().execute(this);
         return 0;
     }
